@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MCC Expense Tracker</title>
+<link rel="icon" href="logo.png">
+<meta name="theme-color" content="#BE1E2D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="login" class="loginwrap" hidden>
+<div class="card loginbox">
+<img src="logo.png" alt="MCC logo" width="64" height="64">
+<h2>MCC Expense Tracker</h2>
+<small style="color:var(--muted)">Mabalacat City College · Log in to sync your data</small>
+<input id="lemail" type="email" placeholder="Email" autocomplete="email">
+<input id="lpass" type="password" placeholder="Password (min. 6 characters)" autocomplete="current-password">
+<button class="btn" id="lin">Log in</button>
+<button class="btn alt" id="lup">Create account</button>
+<small id="lmsg" style="color:var(--red)"></small>
+</div>
+</div>
+<header><div class="top">
+<img src="logo.png" alt="MCC logo">
+<div><h1>MCC Expense Tracker</h1><p>Mabalacat City College · Track smart, spend wise</p><p id="sync">💾 Saved on this device</p></div>
+<button id="theme" title="Toggle theme">🌓</button><button id="logout" title="Log out" hidden>⎋</button>
+</div></header>
+<main>
+<section class="card row"><label>Month <input type="month" id="month"></label><input id="search" placeholder="Search…" style="flex:1"><button class="btn" id="csv">Export CSV</button><button class="btn alt" id="bak">Backup</button><button class="btn alt" id="rest">Restore</button><input type="file" id="file" accept=".json" hidden><div id="bkmsg" style="width:100%;font-size:.85rem;color:var(--muted)"></div></section>
+<section class="stats">
+<div class="card stat bal"><small>Balance</small><b id="bal">₱0.00</b></div>
+<div class="card stat inc"><small>Income</small><b id="inc">₱0.00</b></div>
+<div class="card stat exp"><small>Expenses</small><b id="exp">₱0.00</b></div>
+</section>
+<section class="card">
+<div class="row"><h2 style="margin:0">Monthly budget</h2><input type="number" id="budget" min="0" placeholder="Set budget (₱)" style="margin-left:auto;width:170px"></div>
+<div class="bar"><i id="bfill"></i></div><small id="btext" style="color:var(--muted)">Set a budget to see your progress.</small>
+</section>
+<section class="card">
+<h2>Add transaction</h2>
+<div class="form">
+<select id="type"><option value="e">Expense</option><option value="i">Income</option></select>
+<input id="title" placeholder="Description">
+<input id="amount" type="number" min="0" step="0.01" placeholder="Amount (₱)">
+<select id="cat"></select>
+<input id="date" type="date">
+<select id="repeat"><option value="">No repeat</option><option value="w">Repeat weekly</option><option value="m">Repeat monthly</option></select>
+<button class="btn" id="add">Add</button><button class="btn alt" id="cancel" hidden>Cancel</button>
+</div>
+</section>
+<section class="two">
+<div class="card"><h2>Spending by category</h2><div class="donut" id="donut"></div><div class="leg" id="leg"></div></div>
+<div class="card"><h2>Transactions</h2><div id="list"></div></div>
+</section>
+<section class="two2">
+<div class="card"><h2>Category budgets</h2><div class="row"><select id="cbCat"></select><input id="cbAmt" type="number" min="0" placeholder="Limit (₱, 0 = remove)" style="flex:1"><button class="btn" id="cbSet">Set</button></div><div id="cbList"></div></div>
+<div class="card"><h2>Savings goals</h2><div class="row"><input id="gName" placeholder="Goal name" style="flex:1"><input id="gTarget" type="number" min="0" placeholder="Target (₱)" style="width:120px"><button class="btn" id="gAdd">Add</button></div><div id="gList"></div></div>
+</section>
+<section class="card"><h2>Recurring (added automatically)</h2><div id="rList"></div></section>
+</main>
+<footer>Your data syncs to your account and is also saved on this device.</footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
