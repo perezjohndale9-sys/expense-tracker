@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Log in · MCC Expense Tracker</title>
+<link rel="icon" href="logo.png">
+<meta name="theme-color" content="#BE1E2D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="login">
+<main class="loginwrap">
+<div class="card loginbox">
+<img src="logo.png" alt="MCC logo" width="64" height="64">
+<h2>Welcome back</h2>
+<small style="color:var(--muted)">Mabalacat City College · Log in to see your data</small>
+<input id="lemail" type="email" placeholder="Email" autocomplete="email">
+<input id="lpass" type="password" placeholder="Password" autocomplete="current-password">
+<button class="btn" id="go">Log in</button>
+<small id="lmsg" style="color:var(--exp)"></small>
+<small class="alt-link">New here? <a href="signup.html">Create an account</a></small>
+</div>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="auth.js"></script>
+</body>
+</html>
